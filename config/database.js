@@ -1,6 +1,10 @@
 const e = require("express");
 const Sequelize = require("sequelize");
 module.exports = new Sequelize("codegig", "postgres", "123", {
+  define: {
+    createdAt: "createdat",
+    updatedAt: "updatedat",
+  },
   host: "localhost",
   dialect: "postgres",
 
