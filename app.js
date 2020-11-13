@@ -13,6 +13,22 @@ db.authenticate()
 
 const app = express();
 
+//Handlebars middleware
+app.engine(
+  "handlebars",
+  exphbs({
+    defaultLayout: "main",
+    runtimeOptions: {
+      allowProtoPropertiesByDefault: true,
+      allowProtoMethodsByDefault: true,
+    },
+  })
+);
+app.set("view engine", "handlebars");
+
+//set static folder
+app.use(express.static(path.join(__dirname, "public")));
+
 app.get("/", (req, res) => res.send("INDEX"));
 
 //Gig Routes

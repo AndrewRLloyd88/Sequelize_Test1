@@ -7,8 +7,9 @@ const Gig = require("../models/Gig");
 router.get("/", (req, res) =>
   Gig.findAll()
     .then((gigs) => {
-      console.log(gigs);
-      res.sendStatus(200);
+      res.render("gigs", {
+        gigs,
+      });
     })
     .catch((error) => console.log("error: ", error))
 );
@@ -16,12 +17,12 @@ router.get("/", (req, res) =>
 //add a gig
 router.get("/add", (req, res) => {
   const data = {
-    title: "Looking for a React Developer",
-    technologies: "react,javascript,html,css",
-    budget: "$3000",
+    title: "Simple Wordpress Website",
+    technologies: "wordpress,php,html,css",
+    budget: "$1000",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    contact_email: "user1@gmail.com",
+    contact_email: "user2@gmail.com",
   };
   //pulling all this out from the data object
   let { title, technologies, budget, description, contact_email } = data;
